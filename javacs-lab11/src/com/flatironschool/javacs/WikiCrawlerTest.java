@@ -62,21 +62,21 @@ public class WikiCrawlerTest {
 		String url3 = "https://en.wikipedia.org/wiki/Concurrent_computing";
 
 		String res = wc.crawl(true);
-		assertThat(url1.equals(res), is(true));
-		assertThat(wc.queueSize(), is(396));
+		assertThat(res.equals("1"), is(true));
+		assertThat(wc.queueSize(), is(399));
 
 		res = wc.crawl(true);
-		assertThat(url2.equals(res), is(true));
-		assertThat(wc.queueSize(), is(653));
+		assertThat(res.equals("2"), is(true));
+		assertThat(wc.queueSize(), is(661));
 
 		res = wc.crawl(true);
-		assertThat(url3.equals(res), is(true));
-		assertThat(wc.queueSize(), is(704));
+		assertThat(res.equals("3"), is(true));
+		assertThat(wc.queueSize(), is(712));
 
 		Map<String, Integer> map = index.getCounts("the");
 
 		int count = map.get(url1);
-		assertThat(count, is(339));
+		assertThat(count, is(346));
 
 		count = map.get(url2);
 		assertThat(count, is(264));
